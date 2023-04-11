@@ -15,6 +15,7 @@ contract Escrow {
 	}
 
 	event Approved(uint);
+	event Destroyed();
 
 	function approve() external {
 		require(msg.sender == arbiter);
@@ -23,5 +24,11 @@ contract Escrow {
  		require(sent, "Failed to send Ether");
 		emit Approved(balance);
 		isApproved = true;
+	}
+
+	function destroy() public {
+		require(msg.sender == depositor, "Only owner can destroy the contract");
+		emit Destroyed();
+		selfdestruct(payable(msg.sender));
 	}
 }

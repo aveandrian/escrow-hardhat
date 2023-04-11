@@ -42,4 +42,23 @@ describe('Escrow', function () {
       expect(after.sub(before)).to.eq(deposit);
     });
   });
+
+  describe('after destroying from address other than the depositor', () => {
+    it('should be reverted',async ()=>{
+      await expect(contract.connect(beneficiary).destroy()).to.be.reverted;
+    })
+  })
+
+  describe('after destroying from the depositor address', () => {
+    it('funds should be transfered back to depositor',async ()=>{
+      const before = await ethers.provider.getBalance(depositor.getAddress());
+      const approveTxn = await contract.connect(depositor).destroy();
+      const receipt = await approveTxn.wait();
+      const gas = ethers.BigNumber.from(receipt.effectiveGasPrice * receipt.gasUsed);
+      const after = await ethers.provider.getBalance(depositor.getAddress());
+      
+      expect(await ethers.provider.getBalance(contract.address)).eq(0)
+      expect(before.add(deposit).sub(gas)).eq(after);
+    })
+  })
 });

@@ -6,6 +6,11 @@ import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
+window.ethereum.on('accountsChanged', function (accounts) {
+  // Time to reload your interface with accounts[0]!
+  window.location.reload(false);
+})
+
 if (!window.ethereum) {
   root.render(
     <React.StrictMode>
@@ -15,6 +20,7 @@ if (!window.ethereum) {
 } else {
   root.render(
     <React.StrictMode>
+      {/* <Header /> */}
       <App />
     </React.StrictMode>
   );

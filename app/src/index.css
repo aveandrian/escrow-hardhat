@@ -1,15 +1,32 @@
-body {
-  background-color: #eee;
-  display: flex;
-  font-family: 'Muli', sans-serif;
+* {
+  font-family: 'Roboto', sans-serif;
 }
 
-.contract, .existing-contracts {
+body {
+  background-color: #eee;
+}
+
+.main-container {
+  display: flex;
+  /* align-items: center;  */
+  justify-content: center; 
+  padding: 20px;
+}
+
+.new-contract, .existing-contracts {
+  height: fit-content;
   margin: 20px;
-  display: inline-block;
   padding: 40px;
   border: 1px solid #ddd;
   background-color: #fff;
+}
+
+.new-contract {
+  width: 27%;
+}
+
+.existing-contracts {
+  width: 50%;
 }
 
 h1 {
@@ -27,12 +44,17 @@ label {
 }
 
 input[type="text"] {
+  margin: 5px;
   padding: 6px;
-  font-size: 18px;
+  font-size: 15px;
+}
+
+.alert {
+  font-size: 12px;
 }
 
 .button {
-  background-color: #f58427;
+  background-color: #1e805e;
   color: white;
   text-align: center;
   font-weight: bold;
