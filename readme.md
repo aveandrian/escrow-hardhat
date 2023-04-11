@@ -2,6 +2,9 @@
 
 This is an Escrow Dapp built with [Hardhat](https://hardhat.org/).
 
+The app can create, approve, cancel escrow contracts.  
+The app consists of FE and BE
+
 ## Project Layout
 
 There are three top-level folders:
@@ -24,3 +27,7 @@ Compile the contracts using `npx hardhat compile`. The artifacts will be placed 
 
 To run the front-end application run `npm start` from the `/app` directory. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
+## Back-End 
+To run the back-end application run `node index.js` from the `/server` directory. 
+
+Should see `Listening on port 3042!` in terminal
